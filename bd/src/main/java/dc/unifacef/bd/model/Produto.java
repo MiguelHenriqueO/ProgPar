@@ -14,5 +14,5 @@ public class Produto {
     @Column
     private Double price;
     @Column (length = 500)
-    private String desc;
+    private String descricao;
 }
