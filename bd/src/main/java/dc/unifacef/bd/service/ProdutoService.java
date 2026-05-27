@@ -19,10 +19,11 @@ public class ProdutoService {
     //listar os produtos da tabela produtos
     public List<Produto> listar(){
         return repo.findAll();
-    }
+    } // select * from produtos
 
     //listar os produtos da tabela produtos por id
     public Optional<Produto> buscarPorId(Long id){
+        // select * from produtos where id = id
         return repo.findById(id);// pode ou não retornar um produto
     }
     // remove um produto da tabela produto
@@ -32,6 +33,21 @@ public class ProdutoService {
             return true; // remove
         }
         return false; //não remove
+    }
+
+    //atualiza um produto por um id e o produto alterado
+    public Produto atualiza(long id,Produto alterado){
+        if(repo.existsById(id)){
+            //produto existe para atualização
+            alterado.setId(id);
+            return repo.save(alterado); // como alterado tem id ele faz update
+        }
+        return null; // produto não existe
+    }
+
+    //cria ou insere o produto no banco
+    public Produto salva(Produto produto){
+        return repo.save(produto); // como produto não tem id ele faz insert
     }
 
 }
