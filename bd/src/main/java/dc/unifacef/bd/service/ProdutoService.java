@@ -47,6 +47,9 @@ public class ProdutoService {
 
     //cria ou insere o produto no banco
     public Produto salva(Produto produto){
+        if(produto.getDescricao().equals("robo")){
+
+        }
         return repo.save(produto); // como produto não tem id ele faz insert
     }
 
